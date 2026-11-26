@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>나의 활동 통계</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<h1>나의 활동 통계</h1>
+
+<hr>
+
+<h2>
+    <span th:text="${loginUser.nickname}"></span>님의 활동 현황
+</h2>
+
+<p>
+    내가 찜한 도서 수:
+    <span th:text="${favoriteCount}"></span>권
+</p>
+
+<p>
+    내가 작성한 리뷰 수:
+    <span th:text="${reviewCount}"></span>개
+</p>
+
+<p>
+    내가 작성한 리뷰의 평균 평점:
+    <span th:text="${#numbers.formatDecimal(averageRating, 1, 1)}"></span>점
+</p>
+
+<hr>
+
+<a href="/books">도서 목록으로 돌아가기</a>
+
+</body>
+</html>

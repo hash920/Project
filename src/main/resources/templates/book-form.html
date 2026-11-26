@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>도서 등록</title>
+  <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<h1>도서 등록</h1>
+
+<form action="/books" method="post">
+
+  <p>
+    도서 제목:
+    <input type="text" name="title" required>
+  </p>
+
+  <p>
+    저자:
+    <input type="text" name="author" required>
+  </p>
+
+  <p>
+    출판사:
+    <input type="text" name="publisher">
+  </p>
+
+  <p>
+    가격:
+    <input type="number" name="price">
+  </p>
+
+  <p>
+    카테고리:
+    <select name="category">
+      <option value="">카테고리 선택</option>
+      <option value="프로그래밍">프로그래밍</option>
+      <option value="소설">소설</option>
+      <option value="자기계발">자기계발</option>
+      <option value="경제·경영">경제·경영</option>
+      <option value="과학">과학</option>
+    </select>
+  </p>
+
+  <button type="submit">도서 등록</button>
+
+</form>
+
+<a href="/">홈으로 돌아가기</a>
+
+</body>
+</html>

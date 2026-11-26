@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>나의 찜 목록</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<h1>나의 찜 목록</h1>
+
+<hr>
+
+<div th:if="${#lists.isEmpty(favorites)}">
+    <p>아직 찜한 도서가 없습니다.</p>
+</div>
+
+<div th:each="favorite : ${favorites}">
+
+    <h3>
+        <a th:href="@{/books/{id}(id=${favorite.book.id})}"
+           th:text="${favorite.book.title}"></a>
+    </h3>
+
+    <p>
+        저자:
+        <span th:text="${favorite.book.author}"></span>
+    </p>
+
+    <p>
+        출판사:
+        <span th:text="${favorite.book.publisher}"></span>
+    </p>
+
+    <p>
+        가격:
+        <span th:text="${favorite.book.price}"></span>원
+    </p>
+
+    <form th:action="@{/books/{id}/favorite/delete(id=${favorite.book.id})}"
+          method="post">
+        <button type="submit">찜 취소</button>
+    </form>
+
+    <hr>
+
+</div>
+
+<a href="/books">도서 목록으로 돌아가기</a>
+
+</body>
+</html>

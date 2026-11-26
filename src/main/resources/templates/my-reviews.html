@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>나의 리뷰</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<h1>내가 작성한 리뷰</h1>
+
+<hr>
+
+<div th:if="${#lists.isEmpty(reviews)}">
+    <p>아직 작성한 리뷰가 없습니다.</p>
+</div>
+
+<div th:each="review : ${reviews}">
+
+    <h3>
+        <a th:href="@{/books/{id}(id=${review.book.id})}"
+           th:text="${review.book.title}">
+        </a>
+    </h3>
+
+    <p>
+        평점:
+        <span th:text="${review.rating}"></span>점
+    </p>
+
+    <p>
+        리뷰 내용:
+        <span th:text="${review.content}"></span>
+    </p>
+
+    <hr>
+
+</div>
+
+<a href="/books">도서 목록으로 돌아가기</a>
+
+</body>
+</html>

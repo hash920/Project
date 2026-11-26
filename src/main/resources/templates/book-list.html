@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>도서 목록</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<h1>도서 목록</h1>
+
+<!-- 회원 메뉴 -->
+<div class="user-menu" th:if="${loginUser != null}">
+    <a href="/favorites">♥ 나의 찜 목록</a>
+    <a href="/recommendations">나의 맞춤형 도서 추천</a>
+    <a href="/my-stats">나의 활동 통계</a>
+    <a href="/my-reviews">내가 작성한 리뷰</a>
+</div>
+
+<!-- 로그인 정보 -->
+<div class="user-info" th:if="${loginUser != null}">
+    <p>
+        <strong th:text="${loginUser.nickname}"></strong>님 환영합니다!
+    </p>
+    <a href="/logout">로그아웃</a>
+</div>
+
+<!-- 도서 검색 영역 -->
+<div class="search-section">
+
+    <h2>도서 검색</h2>
+
+    <form action="/books" method="get" class="search-form">
+
+        <input type="text"
+               name="keyword"
+               placeholder="도서 제목 검색"
+               th:value="${keyword}">
+
+        <select name="category">
+            <option value="">전체 카테고리</option>
+            <option value="프로그래밍" th:selected="${category == '프로그래밍'}">프로그래밍</option>
+            <option value="소설" th:selected="${category == '소설'}">소설</option>
+            <option value="자기계발" th:selected="${category == '자기계발'}">자기계발</option>
+            <option value="경제·경영" th:selected="${category == '경제·경영'}">경제·경영</option>
+            <option value="과학" th:selected="${category == '과학'}">과학</option>
+        </select>
+
+        <select name="sort">
+            <option value="">정렬 기준 선택</option>
+            <option value="title" th:selected="${sort == 'title'}">제목순</option>
+            <option value="priceAsc" th:selected="${sort == 'priceAsc'}">가격 낮은 순</option>
+            <option value="priceDesc" th:selected="${sort == 'priceDesc'}">가격 높은 순</option>
+        </select>
+
+        <button type="submit">검색</button>
+
+    </form>
+
+    <!-- 도서 등록 및 전체 목록 -->
+    <div class="book-actions">
+        <a href="/books/new">+ 도서 등록</a>
+        <a href="/books">전체 목록 보기</a>
+    </div>
+
+</div>
+
+<hr>
+
+<!-- 도서 목록 -->
+<div class="book-container">
+
+    <div class="book-card" th:each="book : ${books}">
+
+        <!-- 도서 제목 -->
+        <h3>
+            <a th:href="@{/books/{id}(id=${book.id})}"
+               th:text="${book.title}">
+            </a>
+        </h3>
+
+        <!-- 도서 정보 -->
+        <p>저자: <span th:text="${book.author}"></span></p>
+
+        <p>출판사: <span th:text="${book.publisher}"></span></p>
+
+        <p>가격: <span th:text="${book.price}"></span>원</p>
+
+        <p>카테고리: <span th:text="${book.category}"></span></p>
+
+        <!-- 수정 및 삭제 버튼 -->
+        <div class="book-card-actions">
+
+            <a th:href="@{/books/{id}/edit(id=${book.id})}">
+                <button type="button">수정</button>
+            </a>
+
+            <form th:action="@{/books/{id}/delete(id=${book.id})}"
+                  method="post">
+                <button type="submit">삭제</button>
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<br>
+
+<a href="/">홈으로 돌아가기</a>
+
+</body>
+</html>

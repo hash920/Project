@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>맞춤형 도서 추천</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<h1>나의 맞춤형 도서 추천</h1>
+
+<hr>
+
+<div th:if="${preferredCategory == null}">
+    <p>아직 찜한 도서가 없습니다.</p>
+    <p>도서를 찜하면 관심 카테고리를 분석하여 추천해 드립니다.</p>
+
+    <a href="/books">도서 목록에서 책 둘러보기</a>
+</div>
+
+<div th:if="${preferredCategory != null}">
+    <h2>
+        회원님의 선호 카테고리:
+        <span th:text="${preferredCategory}"></span>
+    </h2>
+
+    <hr>
+
+    <h2>추천 도서 목록</h2>
+
+    <div th:if="${#lists.isEmpty(recommendedBooks)}">
+        <p>추천할 도서가 없습니다.</p>
+    </div>
+
+    <div th:each="book : ${recommendedBooks}">
+        <h3>
+            <a th:href="@{/books/{id}(id=${book.id})}"
+               th:text="${book.title}"></a>
+        </h3>
+
+        <p>
+            저자:
+            <span th:text="${book.author}"></span>
+        </p>
+
+        <p>
+            출판사:
+            <span th:text="${book.publisher}"></span>
+        </p>
+
+        <p>
+            가격:
+            <span th:text="${book.price}"></span>원
+        </p>
+
+        <p>
+            평균 평점:
+            <span th:text="${#numbers.formatDecimal(recommendedRatings.get(book.id), 1, 1)}"></span>점
+        </p>
+
+        <p>
+            리뷰 개수:
+            <span th:text="${recommendedReviewCounts.get(book.id)}"></span>개
+        </p>
+
+        <p>
+            추천 이유:
+            <span th:text="|회원님이 선호하는 ${preferredCategory} 카테고리의 도서입니다.|"></span>
+        </p>
+
+        <hr>
+    </div>
+</div>
+
+<a href="/books">도서 목록으로 돌아가기</a>
+
+</body>
+</html>
