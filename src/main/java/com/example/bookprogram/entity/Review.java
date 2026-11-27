@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Column;
 
 @Entity
 public class Review {
@@ -17,6 +18,7 @@ public class Review {
 
     private Integer rating;
 
+    @Column(length = 500)
     private String content;
 
     // 리뷰가 작성된 도서

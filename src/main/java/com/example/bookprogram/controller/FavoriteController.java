@@ -50,7 +50,7 @@ public class FavoriteController {
 
         favoriteService.removeFavorite(loginUser, id);
 
-        return "redirect:/books/" + id;
+        return "redirect:/favorites";
     }
 
     // 나의 찜 목록

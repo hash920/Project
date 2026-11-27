@@ -8,6 +8,8 @@ import com.example.bookprogram.repository.ReviewRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -36,6 +38,11 @@ public class BookService {
         return bookRepository.findAll();
     }
 
+    // 전체 도서 페이징 조회
+    public Page<Book> getBooksPage(Pageable pageable) {
+        return bookRepository.findAll(pageable);
+    }
+
     // 도서 제목순 정렬
     public List<Book> getBooksOrderByTitle() {
         return bookRepository.findAll(Sort.by(Sort.Direction.ASC, "title"));
@@ -56,9 +63,19 @@ public class BookService {
         return bookRepository.findByTitleContaining(keyword);
     }
 
+    // 제목 검색 페이징
+    public Page<Book> searchBooks(String keyword, Pageable pageable) {
+        return bookRepository.findByTitleContaining(keyword, pageable);
+    }
+
     // 카테고리별 도서 검색
     public List<Book> searchBooksByCategory(String category) {
         return bookRepository.findByCategory(category);
+    }
+
+    // 카테고리별 검색 페이징
+    public Page<Book> searchBooksByCategory(String category, Pageable pageable) {
+        return bookRepository.findByCategory(category, pageable);
     }
 
     // 도서 상세 조회

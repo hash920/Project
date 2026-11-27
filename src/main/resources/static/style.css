@@ -394,3 +394,569 @@ hr {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* 로그인 및 회원가입 페이지 */
+
+.auth-page {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 15px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background-color: white;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+}
+
+.auth-card h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.auth-description {
+    text-align: center;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.auth-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.auth-form input {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    padding: 12px;
+}
+
+.auth-form button {
+    width: 100%;
+    padding: 13px;
+    margin-top: 5px;
+}
+
+.auth-error {
+    color: red;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 25px;
+    color: #666;
+}
+
+.auth-footer a {
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+
+/* 나의 찜 목록 페이지 */
+
+.favorite-page {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.favorite-page h1 {
+    margin-bottom: 10px;
+}
+
+.favorite-description {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.favorite-actions {
+    margin-bottom: 25px;
+}
+
+.favorite-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 20px;
+}
+
+.favorite-card {
+    background-color: white;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+    display: flex;
+    flex-direction: column;
+}
+
+.favorite-card h3 {
+    margin-top: 0;
+}
+
+.favorite-card h3 a {
+    color: #3498db;
+}
+
+.favorite-info p {
+    line-height: 1.5;
+}
+
+.favorite-form {
+    margin-top: auto;
+    padding-top: 15px;
+}
+
+.favorite-form button {
+    width: 100%;
+}
+
+.favorite-empty {
+    background-color: white;
+    padding: 50px 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+.favorite-empty p {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+@media (max-width: 600px) {
+    .favorite-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 맞춤형 도서 추천 페이지 */
+
+.recommendation-page {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.recommendation-description {
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.preferred-category {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+    margin-bottom: 30px;
+}
+
+.preferred-category h2 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.preferred-category p {
+    color: #3498db;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.recommendation-heading {
+    margin-bottom: 20px;
+}
+
+.recommendation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.recommendation-item {
+    background-color: white;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+    display: flex;
+    flex-direction: column;
+}
+
+.recommendation-item h3 {
+    margin-top: 0;
+}
+
+.recommendation-item h3 a {
+    color: #3498db;
+}
+
+.recommendation-info p,
+.recommendation-rating p {
+    line-height: 1.5;
+}
+
+.recommendation-rating {
+    background-color: #f5f8ff;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.recommendation-reason {
+    background-color: #f8f9fc;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 15px;
+    line-height: 1.5;
+}
+
+.recommendation-reason p {
+    font-weight: bold;
+    margin-top: 0;
+    color: #3498db;
+}
+
+.recommendation-empty {
+    background-color: white;
+    padding: 40px 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+.recommendation-back {
+    margin-top: 30px;
+}
+
+@media (max-width: 600px) {
+    .recommendation-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* 나의 리뷰 페이지 */
+
+.my-reviews-page {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.my-reviews-description {
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.my-reviews-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.my-review-card {
+    background-color: white;
+    padding: 23px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+.my-review-card h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.my-review-card h3 a {
+    color: #3498db;
+}
+
+.my-review-rating {
+    background-color: #f5f8ff;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.my-review-content {
+    background-color: #f8f9fc;
+    padding: 15px;
+    border-radius: 8px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.my-review-content p {
+    font-weight: bold;
+    margin-top: 0;
+    color: #3498db;
+}
+
+.my-reviews-empty {
+    background-color: white;
+    padding: 45px 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+.my-reviews-empty p {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.my-reviews-back {
+    margin-top: 30px;
+}
+
+@media (max-width: 600px) {
+    .my-reviews-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* 나의 활동 통계 페이지 */
+
+.my-stats-page {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.my-stats-description {
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.stats-welcome {
+    background-color: white;
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+    margin-bottom: 25px;
+}
+
+.stats-welcome h2 {
+    margin: 0;
+    font-size: 21px;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.stats-card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+.stats-label {
+    color: #666;
+    font-weight: bold;
+}
+
+.stats-card h2 {
+    font-size: 36px;
+    color: #3498db;
+    margin: 20px 0;
+}
+
+.stats-card h2 small {
+    font-size: 17px;
+}
+
+.stats-card > p:last-child {
+    color: #888;
+    font-size: 14px;
+}
+
+.stats-back {
+    margin-top: 30px;
+}
+
+@media (max-width: 700px) {
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* 도서 등록 페이지 */
+
+.book-form-page {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 20px 15px;
+}
+
+.book-form-card {
+    background-color: white;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.book-form-card h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.book-form-description {
+    text-align: center;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.book-input-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.book-form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.book-form-group input,
+.book-form-group select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+}
+
+.book-input-form button {
+    width: 100%;
+    padding: 13px;
+    margin-top: 5px;
+}
+
+.book-form-footer {
+    text-align: center;
+    margin-top: 25px;
+}
+
+@media (max-width: 600px) {
+    .book-form-card {
+        padding: 22px;
+    }
+}
+/* 페이지 이동 영역 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 30px 0;
+}
+
+/* 페이지 번호 및 이전/다음 버튼 */
+.pagination a {
+    display: inline-block;
+    padding: 9px 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #333;
+    background-color: white;
+    transition: 0.2s;
+}
+
+/* 마우스를 올렸을 때 */
+.pagination a:hover {
+    background-color: #eeeeee;
+}
+
+/* 현재 페이지 */
+.pagination a.active {
+    background-color: #333;
+    color: white;
+    border-color: #333;
+    font-weight: bold;
+}
+
+/* 도서 수 및 페이지 정보 */
+.book-count {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+    padding: 15px 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+.book-count p {
+    margin: 0;
+    color: #555;
+}
+
+.book-count strong {
+    color: #222;
+    font-size: 18px;
+}
+
+
+/* 도서 입력 검증 오류 메시지 */
+.error-message {
+    color: #e53935;
+    font-size: 13px;
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+/* 입력값 검증 실패 시 입력창 강조 */
+.book-input-form input:invalid,
+.book-input-form select:invalid {
+    border-color: #e0e0e0;
+}
+
+.book-input-form input:focus,
+.book-input-form select:focus {
+    outline: none;
+    border-color: #4a90e2;
+}
+/* 도서가 없을 때 안내 메시지 */
+.empty-book-message {
+    text-align: center;
+    padding: 40px 20px;
+    margin: 20px auto;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    color: #666;
+}
+
+.empty-book-message p {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.empty-book-message a {
+    color: #4a90e2;
+    text-decoration: none;
+    font-weight: bold;
+}
+/* 리뷰 등록 오류 안내 */
+.error-message {
+    color: #e53935;
+    background-color: #fff0f0;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 6px;
+    font-size: 14px;
+}

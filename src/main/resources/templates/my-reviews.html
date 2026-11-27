@@ -1,43 +1,65 @@
+
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>나의 리뷰</title>
     <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
 
-<h1>내가 작성한 리뷰</h1>
+<div class="my-reviews-page">
 
-<hr>
+    <h1>내가 작성한 리뷰</h1>
 
-<div th:if="${#lists.isEmpty(reviews)}">
-    <p>아직 작성한 리뷰가 없습니다.</p>
-</div>
-
-<div th:each="review : ${reviews}">
-
-    <h3>
-        <a th:href="@{/books/{id}(id=${review.book.id})}"
-           th:text="${review.book.title}">
-        </a>
-    </h3>
-
-    <p>
-        평점:
-        <span th:text="${review.rating}"></span>점
+    <p class="my-reviews-description">
+        지금까지 작성한 도서 리뷰를 확인할 수 있습니다.
     </p>
 
-    <p>
-        리뷰 내용:
-        <span th:text="${review.content}"></span>
-    </p>
+    <div class="my-reviews-empty"
+         th:if="${#lists.isEmpty(reviews)}">
 
-    <hr>
+        <h3>아직 작성한 리뷰가 없습니다.</h3>
+        <p>관심 있는 도서를 읽고 첫 리뷰를 작성해 보세요!</p>
+
+        <a href="/books">도서 둘러보기</a>
+
+    </div>
+
+    <div class="my-reviews-container"
+         th:unless="${#lists.isEmpty(reviews)}">
+
+        <div th:each="review : ${reviews}"
+             class="my-review-card">
+
+            <h3>
+                <a th:href="@{/books/{id}(id=${review.book.id})}"
+                   th:text="${review.book.title}">
+                </a>
+            </h3>
+
+            <div class="my-review-rating">
+                평점:
+                <strong>
+                    <span th:text="${review.rating}"></span>점
+                </strong>
+            </div>
+
+            <div class="my-review-content">
+                <p>리뷰 내용</p>
+                <span th:text="${review.content}"></span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="my-reviews-back">
+        <a href="/books">도서 목록으로 돌아가기</a>
+    </div>
 
 </div>
-
-<a href="/books">도서 목록으로 돌아가기</a>
 
 </body>
 </html>

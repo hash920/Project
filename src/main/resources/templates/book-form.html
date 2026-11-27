@@ -1,53 +1,108 @@
+
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>도서 등록</title>
   <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
 
-<h1>도서 등록</h1>
+<div class="book-form-page">
 
-<form action="/books" method="post">
+  <div class="book-form-card">
 
-  <p>
-    도서 제목:
-    <input type="text" name="title" required>
-  </p>
+    <h1>도서 등록</h1>
 
-  <p>
-    저자:
-    <input type="text" name="author" required>
-  </p>
+    <p class="book-form-description">
+      새로운 도서 정보를 입력해 주세요.
+    </p>
 
-  <p>
-    출판사:
-    <input type="text" name="publisher">
-  </p>
+    <form action="/books"
+          method="post"
+          class="book-input-form"
+          th:object="${book}">
 
-  <p>
-    가격:
-    <input type="number" name="price">
-  </p>
+      <div class="book-form-group">
+        <label for="title">도서 제목</label>
+        <input type="text"
+               id="title"
+               th:field="*{title}"
+               placeholder="도서 제목을 입력하세요"
+               maxlength="100"
+               required>
+        <p class="error-message"
+           th:if="${#fields.hasErrors('title')}"
+           th:errors="*{title}"></p>
+      </div>
 
-  <p>
-    카테고리:
-    <select name="category">
-      <option value="">카테고리 선택</option>
-      <option value="프로그래밍">프로그래밍</option>
-      <option value="소설">소설</option>
-      <option value="자기계발">자기계발</option>
-      <option value="경제·경영">경제·경영</option>
-      <option value="과학">과학</option>
-    </select>
-  </p>
+      <div class="book-form-group">
+        <label for="author">저자</label>
+        <input type="text"
+               id="author"
+               th:field="*{author}"
+               placeholder="저자 이름을 입력하세요"
+               maxlength="50"
+               required>
+        <p class="error-message"
+           th:if="${#fields.hasErrors('author')}"
+           th:errors="*{author}"></p>
+      </div>
 
-  <button type="submit">도서 등록</button>
+      <div class="book-form-group">
+        <label for="publisher">출판사</label>
+        <input type="text"
+               id="publisher"
+               th:field="*{publisher}"
+               placeholder="출판사를 입력하세요"
+               maxlength="50"
+               required>
+        <p class="error-message"
+           th:if="${#fields.hasErrors('publisher')}"
+           th:errors="*{publisher}"></p>
+      </div>
 
-</form>
+      <div class="book-form-group">
+        <label for="price">가격</label>
+        <input type="number"
+               id="price"
+               th:field="*{price}"
+               min="0"
+               step="1"
+               placeholder="도서 가격을 입력하세요"
+               required>
+        <p class="error-message"
+           th:if="${#fields.hasErrors('price')}"
+           th:errors="*{price}"></p>
+      </div>
 
-<a href="/">홈으로 돌아가기</a>
+      <div class="book-form-group">
+        <label for="category">카테고리</label>
+        <select id="category" th:field="*{category}" required>
+          <option value="">카테고리 선택</option>
+          <option value="프로그래밍">프로그래밍</option>
+          <option value="소설">소설</option>
+          <option value="자기계발">자기계발</option>
+          <option value="경제·경영">경제·경영</option>
+          <option value="과학">과학</option>
+        </select>
+        <p class="error-message"
+           th:if="${#fields.hasErrors('category')}"
+           th:errors="*{category}"></p>
+      </div>
+
+      <button type="submit">도서 등록하기</button>
+
+    </form>
+
+    <div class="book-form-footer">
+      <a href="/books">도서 목록으로 돌아가기</a>
+    </div>
+
+  </div>
+
+</div>
 
 </body>
 </html>

@@ -1,38 +1,64 @@
+
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>나의 활동 통계</title>
     <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
 
-<h1>나의 활동 통계</h1>
+<div class="my-stats-page">
 
-<hr>
+    <h1>나의 활동 통계</h1>
 
-<h2>
-    <span th:text="${loginUser.nickname}"></span>님의 활동 현황
-</h2>
+    <p class="my-stats-description">
+        나의 도서 활동 현황을 확인해 보세요.
+    </p>
 
-<p>
-    내가 찜한 도서 수:
-    <span th:text="${favoriteCount}"></span>권
-</p>
+    <div class="stats-welcome">
+        <h2>
+            <span th:text="${loginUser.nickname}"></span>님의 활동 현황
+        </h2>
+    </div>
 
-<p>
-    내가 작성한 리뷰 수:
-    <span th:text="${reviewCount}"></span>개
-</p>
+    <div class="stats-container">
 
-<p>
-    내가 작성한 리뷰의 평균 평점:
-    <span th:text="${#numbers.formatDecimal(averageRating, 1, 1)}"></span>점
-</p>
+        <div class="stats-card">
+            <p class="stats-label">♥ 찜한 도서</p>
+            <h2>
+                <span th:text="${favoriteCount}"></span>
+                <small>권</small>
+            </h2>
+            <p>관심 있는 도서의 수</p>
+        </div>
 
-<hr>
+        <div class="stats-card">
+            <p class="stats-label">✎ 작성한 리뷰</p>
+            <h2>
+                <span th:text="${reviewCount}"></span>
+                <small>개</small>
+            </h2>
+            <p>내가 작성한 리뷰 수</p>
+        </div>
 
-<a href="/books">도서 목록으로 돌아가기</a>
+        <div class="stats-card">
+            <p class="stats-label">★ 평균 평점</p>
+            <h2>
+                <span th:text="${#numbers.formatDecimal(averageRating, 1, 1)}"></span>
+                <small>점</small>
+            </h2>
+            <p>내가 작성한 리뷰의 평균</p>
+        </div>
+
+    </div>
+
+    <div class="stats-back">
+        <a href="/books">도서 목록으로 돌아가기</a>
+    </div>
+
+</div>
 
 </body>
 </html>
